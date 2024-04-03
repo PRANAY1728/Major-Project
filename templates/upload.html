@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Upload File</title>
+</head>
+<style>
+  /* General styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    /* Background color for the entire page */
+  }
+
+  .container {
+    margin: 50px auto;
+    padding: 20px;
+    width: 80%;
+    /* Adjust width as needed */
+    max-width: 600px;
+    /* Adjust max-width as needed */
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Form styles */
+  form {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+</style>
+
+<body>
+  {% include 'navbar.html' %}
+
+
+  <h1>Intrusion Detection System</h1>
+  <p><b>Upload a file to train the KNN algorithm:</b></p>
+  <div class="container">
+  <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="Train KNN">
+  </form>
+</div>
+  <br>
+  <p><b>Make a prediction using the KNN algorithm:</b></p>
+  <div class="container">
+  <form action="{{ url_for('predict') }}" method="post">
+    <label for="feature1">Feature 1:</label>
+    <input type="text" name="feature1" required><br>
+    <label for="feature2">Feature 2:</label>
+    <input type="text" name="feature2" required><br>
+    <label for="feature3">Feature 3:</label>
+    <input type="text" name="feature3" required><br>
+    <input type="submit" value="Predict">
+  </form>
+</div>
+</body>
+
+</html>
